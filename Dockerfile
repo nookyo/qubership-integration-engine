@@ -11,10 +11,10 @@ COPY pom.xml ./
 RUN mvn dependency:go-offline
 
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package
 
 # Use a minimal runtime base image
-FROM alpine/java:21-jdk
+FROM alpine/java:21-jre
 
 # Set up non-root user in a single layer
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup \

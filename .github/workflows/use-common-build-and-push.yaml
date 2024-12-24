@@ -1,5 +1,5 @@
 # This workflow uses the common build and push Docker image workflow
-name: Use Common Build and Push Docker Image
+name: Use Generic Build and Push
 
 on:
   workflow_dispatch:  
@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  generic-build-and-push:
     uses: nookyo/workflow-hub/.github/workflows/common-build-docker-image.yaml@main    
     with:
       branch: main 

@@ -1,0 +1,18 @@
+# This workflow uses the common build and push Docker image workflow
+name: Use Common Build and Push Docker Image
+
+on:
+  workflow_dispatch:  
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    uses: nookyo/workflow-hub/.github/workflows/common-build-docker-image.yaml@main    
+    with:
+      branch: main 
+      build_command: "mvn clean package"
+      dockerfile_path: "Dockerfile"
+      docker_tags: "latest"
+      push_image: true

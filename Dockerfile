@@ -1,4 +1,4 @@
-# Defini builder step
+# Define builder step
 FROM alpine/java:21-jdk as builder
 
 # Install necessary tools in one layer to reduce image size

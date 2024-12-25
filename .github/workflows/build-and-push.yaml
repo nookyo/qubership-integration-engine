@@ -11,8 +11,8 @@ jobs:
   generic-build-and-push:
     uses: nookyo/workflow-hub/.github/workflows/common-build-docker-image.yaml@main
     secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_TOKEN }}
     with:
       branch: main 
       build_command: "mvn clean package"

@@ -17,4 +17,4 @@ jobs:
       docker_tags: "latest"
       push_image: true
       docker_username: ${{ secrets.DOCKER_USERNAME }}
-      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      docker_password: ${{ secrets.DOCKER_TOKEN }}

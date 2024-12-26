@@ -36,5 +36,3 @@ jobs:
     secrets:
       dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
       dockerhub_password: ${{ secrets.DOCKER_TOKEN }}
-
-        #  nookyo/workflow-hub/.github/workflows/template.yml@main

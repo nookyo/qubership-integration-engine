@@ -1,4 +1,3 @@
-# .github/workflows/main.yml
 name: Main Workflow
 
 on:
@@ -6,13 +5,13 @@ on:
 
 jobs:
   setup:
-    uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml@main 
-   
+    uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml
+
   debug-docker-tags:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      - name: docker tags
+      - name: Debug docker_tags from reusable workflow
         run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
 
   build-and-docker:

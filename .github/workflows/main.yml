@@ -5,7 +5,7 @@ on:
 
 jobs:
   setup:
-    uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml@main
+    uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml
 
   debug-docker-tags:
     runs-on: ubuntu-latest

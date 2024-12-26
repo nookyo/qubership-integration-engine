@@ -1,0 +1,21 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-docker:
+    uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main
+    with:
+      maven_command: "clean package"
+      dockerfile_path: "Dockerfile"
+      docker_tags: "latest"
+      push_image: true
+    secrets:
+      dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
+      dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}

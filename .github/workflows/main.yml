@@ -17,10 +17,9 @@ jobs:
         id: set_tags
         run: |
           TAG=$(echo "${GITHUB_REF}" | sed -e 's|refs/tags/||' -e 's|refs/heads/||')
-          if [ -z "$TAG" ]; then TAG="latest"; fi
+          if [ -z "$TAG" ]; then TAG="main"; fi
           echo "docker_tags: $TAG"
           echo "::set-output name=docker_tags::$TAG"
-
     outputs:
       docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
 
@@ -31,11 +30,15 @@ jobs:
       - name: docker tags
         run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
 
-  trigger-template-workflow:
-    runs-on: ubuntu-latest
+  build-and-docker:
     needs: setup
-    steps:
-      - name: Trigger the reusable workflow
-        uses: nookyo/workflow-hub/.github/workflows/template.yml@main
-        with:
-          docker_tags: ${{ needs.setup.outputs.docker_tags }}
+    uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main
+    with:
+      maven_command: "clean package"
+      dockerfile_path: "Dockerfile"
+      docker_tags: ${{ needs.setup.outputs.docker_tags }}
+      docker_image_name: qubership-integration-engine
+      push_image: true
+    secrets:
+      dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
+      dockerhub_password: ${{ secrets.DOCKER_TOKEN }}

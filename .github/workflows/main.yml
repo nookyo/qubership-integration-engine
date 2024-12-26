@@ -32,10 +32,11 @@ jobs:
         run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
 
   trigger-template-workflow:
-    runs-on: ubuntu-latest
     needs: setup
-    steps:
-      - name: Trigger the reusable workflow
-        uses: nookyo/workflow-hub/.github/workflows/template.yml@main
-        with:
-          docker_tags: ${{ needs.setup.outputs.docker_tags }}
+    uses: nookyo/workflow-hub/.github/workflows/template.yml@main
+    with:
+      docker_tags: ${{ needs.setup.outputs.docker_tags }}
+
+
+
+        #  nookyo/workflow-hub/.github/workflows/template.yml@main

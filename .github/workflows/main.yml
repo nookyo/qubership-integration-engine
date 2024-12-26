@@ -16,7 +16,6 @@ jobs:
           TAG=$(echo ${GITHUB_REF} | sed -e 's|refs/tags/||' -e 's|refs/heads/||')
           if [ -z "$TAG" ]; then TAG="latest"; fi
           echo "::set-output name=docker_tags::$TAG"
-          
       outputs:
         docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
 

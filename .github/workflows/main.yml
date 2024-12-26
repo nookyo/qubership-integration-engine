@@ -2,7 +2,7 @@ name: Main Workflow
 
 on:
   workflow_dispatch:  
-  
+
 jobs:
   build-and-docker:
     uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main
@@ -10,6 +10,7 @@ jobs:
       maven_command: "clean package"
       dockerfile_path: "Dockerfile"
       docker_tags: "latest"
+      docker_image_name: qubership-integration-engine
       push_image: true
     secrets:
       dockerhub_username: ${{ secrets.DOCKER_USERNAME }}

@@ -12,12 +12,13 @@ jobs:
 
       - name: Set docker tags variable
         id: set_tags
-        run: |
-          TAG=$(echo ${GITHUB_REF} | sed -e 's|refs/tags/||' -e 's|refs/heads/||')
-          if [ -z "$TAG" ]; then TAG="latest"; fi
-          echo "::set-output name=docker_tags::$TAG"
-      outputs:
-        docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
+        run: echo "docker_tags=$(echo ${GITHUB_REF} | sed -e 's|refs/tags/||' -e 's|refs/heads/||')" >> $GITHUB_ENV
+
+      - name: Echo docker tags
+        run: ${{ steps.set_tags.outputs.docker_tags }}
+  
+    outputs:
+      docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
 
   build-and-docker:
     needs: setup

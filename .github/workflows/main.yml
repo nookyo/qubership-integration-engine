@@ -16,4 +16,4 @@ jobs:
       push_image: true
     secrets:
       dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
-      dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
+      dockerhub_password: ${{ secrets.DOCKER_TOKEN }}

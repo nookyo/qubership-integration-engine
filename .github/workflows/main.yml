@@ -30,7 +30,7 @@ jobs:
       - name: docker tags
         run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
 
-  template-build-and-docker:
+  template-build:
     needs: setup
     uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main
     with:

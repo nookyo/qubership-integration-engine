@@ -3,10 +3,6 @@ name: Use Generic Build and Push
 
 on:
   workflow_dispatch:  
-  push:
-    branches:
-      - main
-
 jobs:
   generic-build-and-push:
     uses: nookyo/workflow-hub/.github/workflows/common-build-docker-image.yaml@main

@@ -36,6 +36,6 @@ jobs:
     needs: setup
     steps:
       - name: Trigger the reusable workflow
-        uses: nookyo/workflow-hub/.github/workflows/template.yml
+        uses: nookyo/workflow-hub/.github/workflows/template.yml@main
         with:
           docker_tags: ${{ needs.setup.outputs.docker_tags }}

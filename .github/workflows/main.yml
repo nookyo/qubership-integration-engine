@@ -14,6 +14,9 @@ jobs:
         id: set_tags
         run: echo "docker_tags=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
+      - name: Echo docker tags
+        run: ${{ steps.set_tags.outputs.docker_tags }}
+  
     outputs:
       docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
 

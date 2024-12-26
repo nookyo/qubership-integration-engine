@@ -28,5 +28,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      - name: Debug docker_tags value before passing to reusable workflow
-        run: echo "docker_tags before passing to build-and-docker ${{ needs.setup.outputs.docker_tags }}"
+      - name: docker tags
+        run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"

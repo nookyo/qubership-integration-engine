@@ -10,25 +10,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Debug GITHUB_REF
+        run: echo "GITHUB_REF = $GITHUB_REF"
+
       - name: Set docker tags variable
         id: set_tags
-        run: echo "docker_tags=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: |
+          TAG=$(echo "${GITHUB_REF}" | sed -e 's|refs/tags/||' -e 's|refs/heads/||')
+          if [ -z "$TAG" ]; then TAG="latest"; fi
+          echo "docker_tags: $TAG"
+          echo "::set-output name=docker_tags::$TAG"
 
-      - name: Echo docker tags
-        run: ${{ steps.set_tags.outputs.docker_tags }}
-  
     outputs:
       docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
 
-  build-and-docker:
-    needs: setup
-    uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main
-    with:
-      maven_command: "clean package"
-      dockerfile_path: "Dockerfile"
-      docker_tags: ${{ needs.setup.outputs.docker_tags }}
-      docker_image_name: qubership-integration-engine
-      push_image: true
-    secrets:
-      dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
-      dockerhub_password: ${{ secrets.DOCKER_TOKEN }}
+   debug-docker-tags:
+      runs-on: ubuntu-latest
+      needs: setup
+      steps:
+        - name: Debug docker_tags value before passing to reusable workflow
+          run: echo docker_tags before passing to build-and-docker: ${{ needs.setup.outputs.docker_tags }} 

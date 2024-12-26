@@ -24,19 +24,6 @@ jobs:
     outputs:
       docker_tags: ${{ steps.set_tags.outputs.docker_tags }}
 
-  debug-docker-tags:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
-      - name: docker tags
-        run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
-
-  trigger-template-workflow:
-    needs: setup
-    uses: nookyo/workflow-hub/.github/workflows/template.yml@main
-    with:
-      docker_tags: ${{ needs.setup.outputs.docker_tags }}
-
   build-and-docker:
     needs: setup
     uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main

@@ -12,7 +12,7 @@ jobs:
     needs: setup-tag
     steps:
       - name: docker tags
-        run: echo "docker_tag = ${{ needs.setup.outputs.docker_tag }}"
+        run: echo "docker_tag = ${{ needs.setup-tag.outputs.docker_tag }}"
 
   build-app:
     needs: setup-tag
@@ -20,8 +20,7 @@ jobs:
     with:
       artifact_name: qip-engine-jar
       artifact_path: target/qip-engine-*-exec.jar 
-      maven_command: "clean package" 
+      maven_command: "clean package"
     secrets:
       maven_username: ${{ secrets.OSSRH_USERNAME }}
       maven_password: ${{ secrets.OSSRH_TOKEN }}
-	     

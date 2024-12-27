@@ -12,7 +12,7 @@ jobs:
     needs: setup-tag
     steps:
       - name: docker tags
-        run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
+        run: echo "docker_tag = ${{ needs.setup.outputs.docker_tag }}"
 
   build-app:
     needs: setup-tag

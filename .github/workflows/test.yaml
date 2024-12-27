@@ -4,7 +4,7 @@ on:
 
 jobs:
   call_first_workflow:
-    uses:  nookyo/workflow-hub/.github/workflows/first-reusable.yml@main
+    uses:  nookyo/workflow-hub/.github/workflows/first-reusable.yaml@main
 
   call_second_workflow:
     needs: call_first_workflow

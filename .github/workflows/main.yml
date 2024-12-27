@@ -21,3 +21,7 @@ jobs:
       artifact_name: qip-engine-jar
       artifact_path: target/qip-engine-*-exec.jar 
       maven_command: "clean package" 
+    secrets:
+      maven_username: ${{ secrets.OSSRH_USERNAME}}
+      maven_password: ${{ secrets.OSSRH_TOKEN }}
+	     

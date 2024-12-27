@@ -13,16 +13,8 @@ jobs:
     steps:
       - name: docker tags
         run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
-
-  template-build:
+  build-app:
     needs: setup
-    uses: nookyo/workflow-hub/.github/workflows/build-and-docker.yml@main
+    uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
     with:
-      maven_command: "clean package"
-      dockerfile_path: "Dockerfile"
-      docker_tags: ${{ needs.setup.outputs.docker_tags }}
-      docker_image_name: qubership-integration-engine
-      push_image: true
-    secrets:
-      dockerhub_username: ${{ secrets.DOCKER_USERNAME }}
-      dockerhub_password: ${{ secrets.DOCKER_TOKEN }}
+      maven_command: "clean package" 

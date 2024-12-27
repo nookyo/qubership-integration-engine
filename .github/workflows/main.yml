@@ -4,17 +4,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
+  setup-tag:
     uses: nookyo/workflow-hub/.github/workflows/docker-tag-template.yml@main
 
-  debug-docker-tags:
+  debug-docker-tag:
     runs-on: ubuntu-latest
-    needs: setup
+    needs: setup-tag
     steps:
       - name: docker tags
         run: echo "docker_tags = ${{ needs.setup.outputs.docker_tags }}"
+
   build-app:
-    needs: setup
+    needs: setup-tag
     uses: nookyo/workflow-hub/.github/workflows/build-app.yml@main
     with:
       artifact_name: qip-engine-jar

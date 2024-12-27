@@ -4,10 +4,10 @@ on:
 
 jobs:
   call_first_workflow:
-    uses:  nookyo/workflow-hub/.github/workflows/first-reusable.yml@main
+    uses:  nookyo/workflow-hub/first-reusable.yml@main
 
   call_second_workflow:
     needs: call_first_workflow
-    uses:  nookyo/workflow-hub/.github/workflows/second-reusable.yml@main
+    uses:  nookyo/workflow-hub//second-reusable.yml@main
     with:
       example_input: ${{ needs.call_first_workflow.outputs.example_output }}

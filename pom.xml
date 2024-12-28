@@ -61,8 +61,8 @@
   <distributionManagement>
     <repository>
       <id>ossrh</id>
-      <name>Central Repository OSSRH</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <name>Central Maven Repository</name>
+      <url>https://central.sonatype.com/api/v1/publisher/upload</url>
     </repository>
   </distributionManagement>
 

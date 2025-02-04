@@ -27,7 +27,7 @@ on:
     #     value: ${{ jobs.build-and-push.outputs.built_tags }}
 
 jobs:
-  mavenb-build:
+  maven-build:
     runs-on: ubuntu-latest
 
     steps:

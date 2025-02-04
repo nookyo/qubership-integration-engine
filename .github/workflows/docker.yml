@@ -5,7 +5,7 @@ on:
     inputs:
       image_name:
         description: 'Name of the Docker image (without ghcr.io/)'
-        default: qubership-catalog-library
+        default: qubership-integration-engine
         # required: true
         type: string
       dockerfile_path:

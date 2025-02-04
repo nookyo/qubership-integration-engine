@@ -67,8 +67,8 @@ jobs:
     #   built_tags: ${{ steps.collect-tags.outputs.built_tags }}
 
     steps:
-    #   - name: Checkout repository
-    #     uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
 
     #   - name: Set up JDK 21

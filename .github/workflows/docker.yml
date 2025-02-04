@@ -62,8 +62,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
-    outputs:
-      built_tags: ${{ steps.collect-tags.outputs.built_tags }}
+    # outputs:
+    #   built_tags: ${{ steps.collect-tags.outputs.built_tags }}
 
     steps:
     #   - name: Checkout repository

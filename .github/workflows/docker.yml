@@ -58,6 +58,10 @@ jobs:
       - name: Check if JAR file exists
         run: ls -la target/
 
+      - name: Load Docker tags from file
+        id: load-tags
+        run: echo "TAGS=$(cat .github/docker-tags.txt)" >> $GITHUB_ENV
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 

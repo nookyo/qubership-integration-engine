@@ -133,6 +133,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Collect built tags for output
-        id: collect-tags
-        run: echo "built_tags=${{ steps.meta.outputs.tags }}" >> $GITHUB_OUTPUT
+    #   - name: Collect built tags for output
+    #     id: collect-tags
+    #     run: echo "built_tags=${{ steps.meta.outputs.tags }}" >> $GITHUB_OUTPUT

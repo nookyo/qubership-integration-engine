@@ -61,7 +61,7 @@ jobs:
 
   build-and-push:
     runs-on: ubuntu-latest
-    needs: mavenb-build
+    needs: maven-build
 
     # outputs:
     #   built_tags: ${{ steps.collect-tags.outputs.built_tags }}
